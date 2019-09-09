@@ -18,7 +18,8 @@ public class MainActivityViewModel extends ViewModel implements Callback<NewsRes
     private MutableLiveData<NewsResponse> mutableLiveData;
     private MutableLiveData<Boolean> isUpdating = new MutableLiveData<>();
 
-    private void initDataForMainActivity() {
+    public void fetchDataFromApi() {
+        isUpdating.postValue(true);
         ApiClient.getClient().create(EndPoints.class).getMostPopularNews().enqueue(this);
     }
 
@@ -32,8 +33,7 @@ public class MainActivityViewModel extends ViewModel implements Callback<NewsRes
 
     public void init() {
         if (mutableLiveData == null) {
-            initDataForMainActivity();
-            isUpdating.postValue(true);
+            fetchDataFromApi();
         }
     }
 
