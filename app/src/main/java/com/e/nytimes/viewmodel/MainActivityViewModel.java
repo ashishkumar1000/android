@@ -44,7 +44,6 @@ public class MainActivityViewModel extends ViewModel implements Callback<NewsRes
     @Override
     public void onResponse(Call<NewsResponse> call, Response<NewsResponse> response) {
         NewsResponse newsResponse = response.body();
-        mutableLiveData = new MutableLiveData<>();
         mutableLiveData.postValue(newsResponse);
         isUpdating.postValue(false);
     }

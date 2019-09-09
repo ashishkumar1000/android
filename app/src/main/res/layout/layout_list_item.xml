@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="16dp">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/rl_middle_layout"
+        android:layout_marginTop="16dp"
+        android:background="#D5D5D5" />
+
+    <ImageView
+        android:id="@+id/iv_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="10dp"
+        android:src="@drawable/bck" />
+
+    <RelativeLayout
+        android:id="@+id/rl_middle_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_toEndOf="@id/rl_image">
+
+        <RelativeLayout
+            android:id="@+id/rl_cal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_new_heading"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp">
+
+            <ImageView
+                android:id="@+id/iv_calender"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/calender" />
+
+            <TextView
+                android:id="@+id/tv_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:textColor="#7A7878"
+                android:layout_toEndOf="@+id/iv_calender"
+                android:fontFamily="sans-serif-light"
+                android:text="@string/dummy_string_small" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_author"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_new_heading"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="10dp"
+            android:layout_toLeftOf="@+id/rl_cal"
+            android:ellipsize="end"
+            android:textColor="#7A7878"
+            android:fontFamily="sans-serif-light"
+            android:maxLines="1"
+            android:text="@string/dummy_string" />
+
+        <TextView
+            android:id="@+id/tv_new_heading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:layout_marginEnd="26dp"
+            android:fontFamily="sans-serif-medium"
+            android:maxLines="2"
+            android:textColor="#7A7878"
+            android:text="@string/dummy_string"
+            android:textSize="16sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="10dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_image"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_launcher_background"
+            app:civ_border_color="#800A0A0A"
+            app:civ_border_width="1dp" />
+
+    </RelativeLayout>
+
+</RelativeLayout>
