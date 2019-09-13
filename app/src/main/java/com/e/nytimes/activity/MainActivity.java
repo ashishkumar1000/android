@@ -6,6 +6,9 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -14,6 +17,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 
+import com.e.nytimes.NetworkErrorFragment;
 import com.e.nytimes.R;
 import com.e.nytimes.adapter.NewsListAdapter;
 import com.e.nytimes.model.Result;
@@ -22,7 +26,7 @@ import com.e.nytimes.viewmodel.MainActivityViewModel;
 import java.util.Collections;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {
+public class MainActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener, NetworkErrorFragment.OnNetworkErrorFragmentInteractionListener {
 
     private MainActivityViewModel viewModel;
     private static String TAG = MainActivity.class.getSimpleName();
@@ -46,14 +50,26 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         viewModel.init();
         updateAdapter();
         setLoader();
+        initNetworkError();
 
         swipeContainer.setOnRefreshListener(this);
         checkInternet();
     }
 
+    private void initNetworkError() {
+        viewModel.errorPage().observe(this, show ->{
+            if (show){
+                showNetworkError();
+            }else{
+                hideNetworkError();
+            }
+        });
+    }
+
     private void checkInternet() {
         if (!isNetworkConnected()) {
             Snackbar.make(findViewById(R.id.rl_main), "NO INTERNET!! Please swipe to refresh once network is back.", Snackbar.LENGTH_SHORT).show();
+            showNetworkError();
         }
     }
 
@@ -108,4 +124,25 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         return cm.getActiveNetworkInfo() != null && cm.getActiveNetworkInfo().isConnected();
     }
 
+    @Override
+    public void onRetryClickedFromNetworkErrorPage() {
+        onRefresh();
+    }
+
+    private void showNetworkError() {
+        getSupportFragmentManager().beginTransaction()
+                .add(R.id.fl_error_layout, NetworkErrorFragment.newInstance(), NetworkErrorFragment.class.getName())
+                .commitAllowingStateLoss();
+    }
+
+    private void hideNetworkError() {
+        Fragment frag = getSupportFragmentManager().findFragmentByTag(NetworkErrorFragment.class.getName());
+        if (frag != null) {
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.remove(frag);
+            transaction.commit();
+            transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE);
+            frag = null;
+        }
+    }
 }

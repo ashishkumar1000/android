@@ -7,4 +7,11 @@
     <string name="dummy_string">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</string>
     <string name="dummy_string_small">XXXXXXX</string>
     <string name="newyork_times">NewYork Times</string>
+    <string name="network_error_heading">Sorry, we can\'t connect right now.</string>
+    <string name="roboto_regular">sans-serif</string>
+    <string name="roboto_light">sans-serif-light</string>
+    <string name="roboto_condensed">sans-serif-condensed</string>
+    <string name="roboto_black">sans-serif-black</string>
+    <string name="roboto_thin">sans-serif-thin</string>
+    <string name="try_again">Try again</string>
 </resources>

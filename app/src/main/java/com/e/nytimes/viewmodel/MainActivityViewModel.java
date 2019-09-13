@@ -17,9 +17,11 @@ public class MainActivityViewModel extends ViewModel implements Callback<NewsRes
     private String TAG = MainActivityViewModel.class.getSimpleName();
     private MutableLiveData<NewsResponse> mutableLiveData;
     private MutableLiveData<Boolean> isUpdating = new MutableLiveData<>();
+    private MutableLiveData<Boolean> showError = new MutableLiveData<>();
 
     public void fetchDataFromApi() {
         isUpdating.postValue(true);
+        showError.postValue(false);
         ApiClient.getClient().create(EndPoints.class).getMostPopularNews().enqueue(this);
     }
 
@@ -41,16 +43,22 @@ public class MainActivityViewModel extends ViewModel implements Callback<NewsRes
         return isUpdating;
     }
 
+    public LiveData<Boolean> errorPage() {
+        return showError;
+    }
+
     @Override
     public void onResponse(Call<NewsResponse> call, Response<NewsResponse> response) {
         NewsResponse newsResponse = response.body();
         mutableLiveData.postValue(newsResponse);
         isUpdating.postValue(false);
+        showError.postValue(false);
     }
 
     @Override
     public void onFailure(Call<NewsResponse> call, Throwable t) {
         Log.d(TAG, "On failure response: " + t);
         isUpdating.postValue(false);
+        showError.postValue(true);
     }
 }

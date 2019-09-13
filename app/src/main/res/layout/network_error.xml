@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:gravity="center">
+
+    <Button
+        android:id="@+id/btn_network_error_try_again"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/network_error_text_heading"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:textColor="#3f3f3f"
+        android:background="@drawable/round_button_shape"
+        android:fontFamily="sans-serif-medium"
+        android:text="@string/try_again" />
+
+    <ImageView
+        android:id="@+id/iv_network_error"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/error_page" />
+
+    <TextView
+        android:id="@+id/network_error_text_heading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/iv_network_error"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="sans-serif-medium"
+        android:textColor="#3f3f3f"
+        android:text="@string/network_error_heading"
+        android:textSize="16sp" />
+
+</RelativeLayout>
