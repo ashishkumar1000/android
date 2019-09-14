@@ -50,9 +50,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
-                android:textColor="#7A7878"
+                android:textColor="#777777"
                 android:layout_toEndOf="@+id/iv_calender"
-                android:fontFamily="sans-serif-light"
+                android:fontFamily="@string/roboto_regular"
                 android:text="@string/dummy_string_small" />
         </RelativeLayout>
 
@@ -66,8 +66,8 @@
             android:layout_marginEnd="10dp"
             android:layout_toLeftOf="@+id/rl_cal"
             android:ellipsize="end"
-            android:textColor="#7A7878"
-            android:fontFamily="sans-serif-light"
+            android:textColor="#777777"
+            android:fontFamily="@string/roboto_regular"
             android:maxLines="1"
             android:text="@string/dummy_string" />
 

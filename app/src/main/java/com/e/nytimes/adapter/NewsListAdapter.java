@@ -43,7 +43,7 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.Custom
         setDate(h.date, result);
         setImage(h.newsImage, result.getMedia().get(0));
         h.itemView.setOnClickListener(v -> {
-            ((MainActivity) context).openWebView(result.getUrl());
+            ((MainActivity) context).openWebView(result);
         });
     }
 

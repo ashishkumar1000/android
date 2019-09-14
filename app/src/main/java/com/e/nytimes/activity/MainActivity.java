@@ -102,10 +102,10 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         rv.setAdapter(adapter);
     }
 
-    public void openWebView(String url) {
-        Intent myIntent = new Intent(this, WebViewActivity.class);
-        myIntent.putExtra("url", url);
-        this.startActivity(myIntent);
+    public void openWebView(Result result) {
+        Intent intent = new Intent(this, NewsDetailActivity.class);
+        intent.putExtra(NewsDetailActivity.DATA, result);
+        this.startActivity(intent);
     }
 
     @Override
