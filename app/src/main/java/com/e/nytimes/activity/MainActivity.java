@@ -7,7 +7,6 @@ import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -57,10 +56,10 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
     }
 
     private void initNetworkError() {
-        viewModel.errorPage().observe(this, show ->{
-            if (show){
+        viewModel.errorPage().observe(this, show -> {
+            if (show) {
                 showNetworkError();
-            }else{
+            } else {
                 hideNetworkError();
             }
         });
@@ -68,7 +67,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
 
     private void checkInternet() {
         if (!isNetworkConnected()) {
-            Snackbar.make(findViewById(R.id.rl_main), "NO INTERNET!! Please swipe to refresh once network is back.", Snackbar.LENGTH_SHORT).show();
+            Snackbar.make(findViewById(R.id.rl_main), getString(R.string.NO_INTERNET_MESSAGE), Snackbar.LENGTH_SHORT).show();
             showNetworkError();
         }
     }
@@ -114,7 +113,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
             Snackbar.make(findViewById(R.id.rl_main), "Refreshing data from server...", Snackbar.LENGTH_SHORT).show();
             viewModel.fetchDataFromApi();
         } else {
-            Snackbar.make(findViewById(R.id.rl_main), "NO INTERNET!! Please swipe to refresh once network is back.", Snackbar.LENGTH_SHORT).show();
+            Snackbar.make(findViewById(R.id.rl_main), getString(R.string.NO_INTERNET_MESSAGE), Snackbar.LENGTH_SHORT).show();
             swipeContainer.setRefreshing(false);
         }
     }
@@ -142,7 +141,6 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
             transaction.remove(frag);
             transaction.commit();
             transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE);
-            frag = null;
         }
     }
 }

@@ -15,4 +15,5 @@
     <string name="roboto_thin">sans-serif-thin</string>
     <string name="try_again">Try again</string>
     <string name="title_activity_news_detail">NewsDetailActivity</string>
+    <string name="NO_INTERNET_MESSAGE">NO INTERNET!! Please swipe to refresh once network is back.</string>
 </resources>
