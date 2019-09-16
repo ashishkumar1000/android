@@ -1,7 +1,7 @@
 # android
 Sample App for Implementation of new times Most Popular API
 
-Below components has been used:
+## Below components has been used:
   - MVVM pattern
   - Picasso
   - Retrofit
