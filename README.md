@@ -1,4 +1,4 @@
-# android
+# Newyork Times Android App
 Sample App for Implementation of new times Most Popular API
 
 ## Below components has been used:
